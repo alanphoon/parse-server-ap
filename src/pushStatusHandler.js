@@ -30,7 +30,7 @@ export default function pushStatusHandler(config) {
       pushTime: now.toISOString(),
       _created_at: now,
       query: JSON.stringify(where),
-      payload: body.data,
+      payload: JSON.stringify(body.data),
       source: options.source,
       title: options.title,
       expiry: body.expiration_time,
