@@ -25,6 +25,7 @@ export default function pushStatusHandler(config) {
     let now = new Date();
     let data =  body.data || {};
     let object = {
+      _id: objectId,
       objectId,
       pushTime: now.toISOString(),
       _created_at: now,
