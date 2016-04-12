@@ -7,7 +7,7 @@ import rest from '../rest';
 export class InstallationsRouter extends ClassesRouter {
   handleFind(req) {
 
-    var body = Object.assign(req.body, req.query);
+    var body = Object.assign(req.body, ClassesRouter.JSONFromQuery(req.query));
 
     var options = {};
     if (body.skip) {
@@ -54,6 +54,7 @@ export class InstallationsRouter extends ClassesRouter {
     req.params.className = '_Installation';
     return super.handleDelete(req);
   }
+
 
   mountRoutes() {
     this.route('GET','/installations', req => { return this.handleFind(req); });
