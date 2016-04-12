@@ -23,8 +23,6 @@ export class InstallationsRouter extends ClassesRouter {
       options.include = String(req.body.include);
     }
 
-    console.log('APDEBUG >> InstallationsRouter >> Req >> ' + JSON.stringify(req));
-
     return rest.find(req.config, req.auth,
       '_Installation', req.body.where, options)
       .then((response) => {
