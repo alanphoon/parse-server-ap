@@ -6,6 +6,9 @@ import rest from '../rest';
 
 export class InstallationsRouter extends ClassesRouter {
   handleFind(req) {
+
+    var body = Object.assign(req.body, req.query);
+    
     var options = {};
     if (req.body.skip) {
       options.skip = Number(req.body.skip);
@@ -23,7 +26,7 @@ export class InstallationsRouter extends ClassesRouter {
       options.include = String(req.body.include);
     }
 
-    console.log('APDEBUG >> 2 query where >> ' + JSON.stringify(req.query));
+    console.log('APDEBUG >> 3 body where >> ' + JSON.stringify(req.body.where));
 
     return rest.find(req.config, req.auth,
       '_Installation', req.body.where, options)
