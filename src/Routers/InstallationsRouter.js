@@ -10,26 +10,24 @@ export class InstallationsRouter extends ClassesRouter {
     var body = Object.assign(req.body, ClassesRouter.JSONFromQuery(req.query));
 
     var options = {};
-    if (body.skip) {
-      options.skip = Number(body.skip);
+    if (req.body.skip) {
+      options.skip = Number(req.body.skip);
     }
-    if (body.limit) {
-      options.limit = Number(body.limit);
+    if (req.body.limit) {
+      options.limit = Number(req.body.limit);
     }
-    if (body.order) {
-      options.order = String(body.order);
+    if (req.body.order) {
+      options.order = String(req.body.order);
     }
-    if (body.count) {
+    if (req.body.count) {
       options.count = true;
     }
-    if (body.include) {
-      options.include = String(body.include);
+    if (req.body.include) {
+      options.include = String(req.body.include);
     }
 
-    console.log('APDEBUG >> 3 body where >> ' + JSON.stringify(body.where));
-
     return rest.find(req.config, req.auth,
-      '_Installation', body.where, options)
+      '_Installation', req.body.where, options)
       .then((response) => {
         return {response: response};
       });
